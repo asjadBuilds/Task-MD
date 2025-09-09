@@ -1,69 +1,40 @@
-# React + TypeScript + Vite
+# 📝 Task Manager (React + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Task Management App** built with **React 18 + TypeScript + Vite**, featuring:
+- Add, edit, delete tasks
+- Task prioritization (High / Medium / Low)
+- Task status cycle (Pending → In Progress → Completed)
+- LocalStorage persistence
+- Search and filter tasks
+- Unit & integration testing with **Jest, React Testing Library, and Enzyme**
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- ✅ **Add new tasks** with title, description, and priority  
+- ✏️ **Edit tasks** inline  
+- ❌ **Delete tasks**  
+- 🔄 **Toggle status** between `pending`, `in-progress`, and `completed`  
+- 🗂️ **Filter & search** tasks in real time  
+- 💾 **Persistent storage** via LocalStorage  
+- 🧪 **Testing setup** with Jest + RTL + Enzyme (unit, integration, coverage reports)  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 Project Structure
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├── components/
+│ ├── AddTaskForm/ # Add new task form
+│ ├── TaskItem/ # Single task item
+│ └── TaskDashboard/ # Integration of form + list
+├── hooks/
+│ ├── useTaskManager.ts # Core task management logic
+│ ├── useLocalStorage.ts
+│ └── useDebounce.ts
+├── utils/
+│ ├── testUtils.tsx # Custom render function for tests
+│ └── testData.ts # Factories for test tasks
+├── App.tsx
+├── main.tsx
+└── setupTests.ts # Jest/RTL/Enzyme setup
